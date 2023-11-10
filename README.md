@@ -23,8 +23,11 @@
 """# 克隆github上代码，-b表示特定分支，我们选择main分支
 !git clone -b main https://github.com/qianyulongkong/PPdiffusers-webui-customize.git"""
 
-# 将拉下来的代码文件夹名由PPdiffusers-webui-customize改为PPdiffusers-webui
-!mv /home/aistudio/PPdiffusers-webui-customize /home/aistudio/PPdiffusers-webui
+# 将gitee拉下来的代码文件夹名由ppdiffusers-webui-customize改为PPdiffusers-webui
+!mv /home/aistudio/ppdiffusers-webui-customize /home/aistudio/PPdiffusers-webui
+
+"""# 将github拉下来的代码文件夹名由PPdiffusers-webui-customize改为PPdiffusers-webui
+!mv /home/aistudio/PPdiffusers-webui-customize /home/aistudio/PPdiffusers-webui"""
 ```
 
     正克隆到 'PPdiffusers-webui'...
