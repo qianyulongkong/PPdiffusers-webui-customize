@@ -21,7 +21,10 @@
 !git clone -b master https://gitee.com/qianyulongkong/ppdiffusers-webui-customize.git
 
 """# 克隆github上代码，-b表示特定分支，我们选择main分支
-!git clone -b main https://github.com/qianyulongkong/PPdiffusers-webui-customize.git
+!git clone -b main https://github.com/qianyulongkong/PPdiffusers-webui-customize.git"""
+
+# 将拉下来的代码文件夹名由PPdiffusers-webui-customize改为PPdiffusers-webui
+!mv /home/aistudio/PPdiffusers-webui-customize /home/aistudio/PPdiffusers-webui
 ```
 
     正克隆到 'PPdiffusers-webui'...
@@ -59,6 +62,7 @@ model_name_list = ["Anything-v5.0",
 
 
 ```python
+# data*表示Anything-v5.0.zip存放的位置(需要更改)
 !unzip data/data*/Anything-v5.0.zip -d PPdiffusers-webui/models
 ```
 
