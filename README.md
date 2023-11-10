@@ -17,21 +17,29 @@
 
 
 ```python
-# 克隆gitee上代码，-b表示特定分支，我们选择ppdiffusers分支
-!git clone -b ppdiffusers 
+# 克隆gitee上代码，-b表示特定分支，我们选择master分支
+!git clone -b master https://gitee.com/qianyulongkong/ppdiffusers-webui-customize.git
 
-"""# 克隆github上代码，-b表示特定分支，我们选择ppdiffusers分支
-!git clone -b ppdiffusers 
+"""# 克隆github上代码，-b表示特定分支，我们选择master分支
+!git clone -b master https://github.com/qianyulongkong/PPdiffusers-webui-customize.git
 ```
 
-    正克隆到 'PPdiffusers-webui'...
-    remote: Enumerating objects: 2249, done.[K
-    remote: Counting objects: 100% (2249/2249), done.[K
-    remote: Compressing objects: 100% (1407/1407), done.[K
-    remote: Total 2249 (delta 1322), reused 1732 (delta 808), pack-reused 0[K
-    接收对象中: 100% (2249/2249), 10.03 MiB | 2.32 MiB/s, 完成.
-    处理 delta 中: 100% (1322/1322), 完成.
-    检查连接... 完成。
+    正克隆到 'PPdiffusers-webui'...
+
+    remote: Enumerating objects: 2249, done.[K
+
+    remote: Counting objects: 100% (2249/2249), done.[K
+
+    remote: Compressing objects: 100% (1407/1407), done.[K
+
+    remote: Total 2249 (delta 1322), reused 1732 (delta 808), pack-reused 0[K
+
+    接收对象中: 100% (2249/2249), 10.03 MiB | 2.32 MiB/s, 完成.
+
+    处理 delta 中: 100% (1322/1322), 完成.
+
+    检查连接... 完成。
+
 
 
 
