@@ -20,8 +20,8 @@
 # 克隆gitee上代码，-b表示特定分支，我们选择master分支
 !git clone -b master https://gitee.com/qianyulongkong/ppdiffusers-webui-customize.git
 
-"""# 克隆github上代码，-b表示特定分支，我们选择master分支
-!git clone -b master https://github.com/qianyulongkong/PPdiffusers-webui-customize.git
+"""# 克隆github上代码，-b表示特定分支，我们选择main分支
+!git clone -b main https://github.com/qianyulongkong/PPdiffusers-webui-customize.git
 ```
 
     正克隆到 'PPdiffusers-webui'...
