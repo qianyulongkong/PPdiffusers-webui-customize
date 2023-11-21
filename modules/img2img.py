@@ -9,6 +9,8 @@ def img2img(model_name, lora_name, lora_style, init_image, prompt, negative_prom
     width, height = utils.get_size(Image_size)
     seed = random.randint(0, 2 ** 32) if seed == '-1' else int(seed)
 
+    if not os.path.exists("./PPdiffusers-webui/output/input_img2img"):
+            os.makedirs("./PPdiffusers-webui/output/input_img2img")
     Image.fromarray(init_image).save(f"./PPdiffusers-webui/output/input_img2img/tem_{lora_name}_{utils.out_put_num}.jpg")
     img2img = utils.img2img(
         model_name=model_name, 
@@ -31,8 +33,10 @@ def img2img(model_name, lora_name, lora_style, init_image, prompt, negative_prom
 
     tmp_path = []
     for idx, img in enumerate(img2img):
+        if not os.path.exists("./PPdiffusers-webui/output/output"):
+            os.makedirs("./PPdiffusers-webui/output/output")
         save_path = os.path.join("./PPdiffusers-webui/output/output", lora_name + "_" + lora_style + "_" + f"{utils.out_put_num}_" + str(idx) + ".jpg")
         img.save(save_path)
         tmp_path.append(save_path)
     utils.out_put_num += 1
-    return tmp_path
+    return [Image.open(path) for path in tmp_path]
