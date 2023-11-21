@@ -34,6 +34,11 @@ def inpaint(model_name, lora_name, lora_style, init_image_mask, prompt, negative
     width, height = utils.get_size(Image_size)
     seed = random.randint(0, 2 ** 32) if seed == '-1' else int(seed)
 
+    # 创建保存文件夹
+    if not os.path.exists("./PPdiffusers-webui/output/input_inpaint2img/img"):
+            os.makedirs("./PPdiffusers-webui/output/input_inpaint2img/img")
+    if not os.path.exists("./PPdiffusers-webui/output/input_inpaint2img/mask"):
+            os.makedirs("./PPdiffusers-webui/output/input_inpaint2img/mask")
     # 输入图片及图片mask保存路径
     image_path="./PPdiffusers-webui/output/input_inpaint2img/img/tem_img_{lora_name}_{utils.out_put_num}.png"
     mask_path="./PPdiffusers-webui/output/input_inpaint2img/mask/tem_mask_{lora_name}_{utils.out_put_num}.png"
@@ -62,6 +67,8 @@ def inpaint(model_name, lora_name, lora_style, init_image_mask, prompt, negative
         fp16=False)     #  半精度推理
 
     for idx, img in enumerate(inpaint):
+        if not os.path.exists("./PPdiffusers-webui/output/output"):
+            os.makedirs("./PPdiffusers-webui/output/output")
         inpaint_save_path = os.path.join("./PPdiffusers-webui/output/output", "temp_" + lora_name + "_" + lora_style + "_" + f"{utils.out_put_num}_" + str(idx) + ".jpg")
 
         img.save(inpaint_save_path)
@@ -73,4 +80,4 @@ def inpaint(model_name, lora_name, lora_style, init_image_mask, prompt, negative
 
     utils.out_put_num += 1
 
-    return Image.open(save_path)
+    return [Image.open(save_path)]
