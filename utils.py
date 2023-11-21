@@ -121,7 +121,7 @@ def ReadImage(image, height=None, width=None):
 # 训练角色特征提取Lora
 def train_role_lora(model_name, train_dir, role_name, role_prompt):
     os.system(f'python -u ./PPdiffusers-webui/modules/base_train_lora.py \
-    --pretrained_model_name_or_path="./PPdiffusers-webui/models/{model_name}"  \
+    --pretrained_model_name_or_path="/home/aistudio/PPdiffusers-webui/models/{model_name}"  \
     --output_dir="./PPdiffusers-webui/models/Lora/Role_Lora/{role_name}"  \
     --train_data_dir={train_dir}  \
     --image_format="png" \
@@ -147,17 +147,21 @@ def txt2img(model_name, lora_name, lora_style, prompt, scheduler_name, width, he
     # scheduler = pipe.create_scheduler(scheduler_name)
 
     # 基础模型，需要是paddle版本的权重，未来会加更多的权重
-    pretrained_model_name_or_path = "./PPdiffusers-webui/models/" + model_name
+    pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
-    lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
-    lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+    if lora_name != "none":
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+    if lora_style != "none":
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
     pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
-    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时注释下行
-    pipe.apply_lora(lora_name_path)
-    pipe.apply_lora(lora_style_path)
+    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时选择none或注释下行
+    if lora_name != "none":
+        pipe.apply_lora(lora_name_path)
+    if lora_style != "none":
+        pipe.apply_lora(lora_style_path)
     # pipe.apply_lora()
 
     # 边运行的时候会边传递值到这里！
@@ -193,17 +197,21 @@ def img2img(model_name, lora_name, lora_style, image_path, prompt, scheduler_nam
     init_image = ReadImage(image_path, height=height, width=width)
 
     # 基础模型，需要是paddle版本的权重，未来会加更多的权重
-    pretrained_model_name_or_path = "./PPdiffusers-webui/models/" + model_name
+    pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
-    lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
-    lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+    if lora_name != "none":
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+    if lora_style != "none":
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
     pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
-    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时注释下行
-    pipe.apply_lora(lora_name_path)
-    pipe.apply_lora(lora_style_path)
+    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时选择none或注释下行
+    if lora_name != "none":
+        pipe.apply_lora(lora_name_path)
+    if lora_style != "none":
+        pipe.apply_lora(lora_style_path)
     # pipe.apply_lora()
 
     # 边运行的时候会边传递值到这里！
@@ -238,17 +246,21 @@ def inpaint(model_name, lora_name, lora_style, image_path, mask_path, prompt, sc
     mask_image = ReadImage(mask_path, height=height, width=width)
 
     # 基础模型，需要是paddle版本的权重，未来会加更多的权重
-    pretrained_model_name_or_path = "./PPdiffusers-webui/models/" + model_name
+    pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
-    lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
-    lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+    if lora_name != "none":
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+    if lora_style != "none":
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
     pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
-    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时注释下行
-    pipe.apply_lora(lora_name_path)
-    pipe.apply_lora(lora_style_path)
+    # 加载lora权重, 可以选择加载和不加载lora, 没有lora时选择none或注释下行
+    if lora_name != "none":
+        pipe.apply_lora(lora_name_path)
+    if lora_style != "none":
+        pipe.apply_lora(lora_style_path)
     # pipe.apply_lora()
 
     # 边运行的时候会边传递值到这里！
@@ -293,7 +305,7 @@ def train_dreambooth_lora(zip_file, pretrained_model_name, instance_prompt, vali
                           gradient_accumulation_steps=1, checkpointing_steps=50, learning_rate=1e-4, report_to="visualdl", lr_scheduler="constant", lr_warmup_steps=0,
                           max_train_steps=100, lora_rank=128, validation_epochs=25, validation_guidance_scale=5.0, use_lion=False):
     # 基底模型存放文件夹路径（仅导入文件夹路径不导入model_name时，默认加载Anything-v5基底模型）
-    pretrained_model_path = f"./PPdiffusers-webui/models/{pretrained_model_name}"
+    pretrained_model_path = f"/home/aistudio/PPdiffusers-webui/models/{pretrained_model_name}"
 
     def unzip_file(zip_file):
         os.makedirs("./PPdiffusers-webui/models/Lora/Dream_booth_lora/train_dreambooth_lora", exist_ok=True)
@@ -334,7 +346,7 @@ def train_style_lora(model_name, train_dir, style_name, style_prompt, style_seed
     if os.path.exists("./PPdiffusers-webui/models/Lora/Style_Lora/" + style_name):  
         shutil.rmtree("./PPdiffusers-webui/models/Lora/Style_Lora/" + style_name)
     os.system(f'python -u ./PPdiffusers-webui/modules/base_train_lora.py \
-    --pretrained_model_name_or_path="./PPdiffusers-webui/models/{model_name}"  \
+    --pretrained_model_name_or_path="/home/aistudio/PPdiffusers-webui/models/{model_name}"  \
     --output_dir="./PPdiffusers-webui/models/Lora/Style_Lora/{style_name}"  \
     --train_data_dir={train_dir}  \
     --image_format="png" \
