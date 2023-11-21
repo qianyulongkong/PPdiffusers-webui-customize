@@ -27,10 +27,12 @@ def txt2img(model_name, lora_name, lora_style, prompt, negative_prompt, sampler,
 
     tmp_path = []
     for idx, img in enumerate(txt2img):
+        if not os.path.exists("./PPdiffusers-webui/output/output"):
+            os.makedirs("./PPdiffusers-webui/output/output")
         save_path = os.path.join("./PPdiffusers-webui/output/output", lora_name + "_" + lora_style + "_" + f"{utils.out_put_num}_" + str(idx) + ".jpg")
         img.save(save_path)
         tmp_path.append(save_path)
     utils.out_put_num += 1
-    return tmp_path
+    return [Image.open(path) for path in tmp_path]
 
     
