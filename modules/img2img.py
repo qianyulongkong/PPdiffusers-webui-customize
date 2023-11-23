@@ -16,7 +16,7 @@ def img2img(model_name, lora_name, lora_style, init_image, prompt, negative_prom
         model_name=model_name, 
         lora_name=lora_name, 
         lora_style=lora_style, 
-        image_path="./PPdiffusers-webui/output/input_img2img/tem_{lora_name}_{utils.out_put_num}.jpg",
+        image_path=f"./PPdiffusers-webui/output/input_img2img/tem_{lora_name}_{utils.out_put_num}.jpg",
         prompt=prompt,
         negative_prompt=negative_prompt,
         num_images_per_prompt=num_images, 
