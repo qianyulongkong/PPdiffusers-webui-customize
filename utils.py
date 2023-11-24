@@ -150,9 +150,9 @@ def txt2img(model_name, lora_name, lora_style, prompt, scheduler_name, width, he
     pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
     if lora_name != "none":
-        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "/text_encoder_unet_lora.safetensors"
     if lora_style != "none":
-        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "/text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
@@ -200,9 +200,9 @@ def img2img(model_name, lora_name, lora_style, image_path, prompt, scheduler_nam
     pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
     if lora_name != "none":
-        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "/text_encoder_unet_lora.safetensors"
     if lora_style != "none":
-        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "/text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
@@ -249,9 +249,9 @@ def inpaint(model_name, lora_name, lora_style, image_path, mask_path, prompt, sc
     pretrained_model_name_or_path = "/home/aistudio/PPdiffusers-webui/models/" + model_name
     # 我们加载safetensor版本的权重
     if lora_name != "none":
-        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "text_encoder_unet_lora.safetensors"
+        lora_name_path = "./PPdiffusers-webui/models/Lora/Role_Lora/" + lora_name + "/text_encoder_unet_lora.safetensors"
     if lora_style != "none":
-        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "text_encoder_unet_lora.safetensors"
+        lora_style_path = "./PPdiffusers-webui/models/Lora/Style_Lora/" + lora_style + "/text_encoder_unet_lora.safetensors"
     # 加载之前的模型
     pipe = StableDiffusionPipelineAllinOne.from_pretrained(pretrained_model_name_or_path, safety_checker=None, feature_extractor=None,requires_safety_checker=False)
     # 设置采样器，采样器移到这里实现
